@@ -1,0 +1,100 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.16s ease-out;
+}
+.profile-section {
+  max-width: 640px;
+  margin: 3rem auto;
+  padding: 2rem 2.5rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+}
+
+.profile-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.profile-subtitle {
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+.profile-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.profile-row label {
+  font-weight: 500;
+}
+
+.profile-row input {
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.profile-row input:disabled {
+  background: #f9fafb;
+  color: #6b7280;
+}
+
+.profile-help {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.profile-error {
+  color: #b91c1c;
+  margin-bottom: 0.75rem;
+}
+
+.profile-success {
+  color: #047857;
+  margin-bottom: 0.75rem;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.btn-secondary {
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  cursor: pointer;
+}
+
+.btn-primary {
+  padding: 0.55rem 1.3rem;
+  border-radius: 999px;
+  border: none;
+  background: #7c3aed;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-primary:disabled {
+  opacity: 0.75;
+  cursor: default;
+}

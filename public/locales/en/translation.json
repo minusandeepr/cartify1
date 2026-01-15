@@ -1,0 +1,109 @@
+{
+  "navbar": {
+    "home": "Home",
+    "products": "Products",
+    "wishlist": "Wishlist",
+    "cart": "Cart",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "logout": "Logout"
+  },
+
+  "hero": {
+    "titleLine1": "Shop smart. Ship fast.",
+    "titleLine2": "Cartify makes it simple.",
+    "subtitle": "Discover curated products, quick checkout, fast delivery, and buy with confidence.",
+    "shop": "Shop products",
+    "create": "Create account",
+    "imageAlt": "Hero image"
+  },
+
+  "featured": {
+    "heading": "Featured picks",
+    "sub": "Handpicked products for you."
+  },
+
+  "product": {
+    "price": "Price",
+    "inStock": "Stock: {{count}}",
+    "noImage": "No image available",
+    "addToCart": "Add to cart",
+    "addToCartSuccess": "Added to cart",
+    "addToCartFail": "Failed to add to cart",
+    "details": "View details",
+    "description": "Description",
+    "category": "Category",
+    "stockOut": "Out of stock",
+    "youMayAlsoLike": "You may also like"
+  },
+
+  "auth": {
+    "registerHeading": "Create your account",
+    "loginHeading": "Welcome back!",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "signup": "Sign Up",
+    "signin": "Login",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "invalidEmail": "Please enter a valid email",
+    "shortPassword": "Password must be at least 6 characters",
+    "passwordMismatch": "Passwords do not match"
+  },
+
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty",
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "checkout": "Proceed to checkout",
+    "total": "Total",
+    "cartUpdated": "Cart updated",
+    "removedItem": "Item removed from cart"
+  },
+
+  "wishlist": {
+    "title": "Your wishlist",
+    "empty": "Your wishlist is empty",
+    "added": "Added to wishlist",
+    "removed": "Removed from wishlist"
+  },
+
+  "admin": {
+    "upload": "Upload",
+    "selectProduct": "Select product",
+    "chooseFile": "Choose image",
+    "uploadSuccess": "Image uploaded successfully",
+    "uploadFail": "Upload failed",
+    "addProduct": "Add new product",
+    "editProduct": "Edit product",
+    "deleteProduct": "Delete"
+  },
+
+  "errors": {
+    "404Title": "Page not found",
+    "404Message": "The page you are looking for doesn't exist.",
+    "goHome": "Go to Home",
+    "403Title": "Access denied",
+    "403Message": "You do not have permission to view this page.",
+    "500Title": "Server error",
+    "500Message": "Something went wrong on our end."
+  },
+
+  "footer": {
+    "rights": "All rights reserved.",
+    "contact": "Contact us",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+
+  "toast": {
+    "loginSuccess": "Logged in successfully",
+    "loginFail": "Invalid login credentials",
+    "registerSuccess": "Account created successfully",
+    "registerFail": "Registration failed",
+    "actionSuccess": "Action completed",
+    "actionFail": "Something went wrong"
+  }
+}
