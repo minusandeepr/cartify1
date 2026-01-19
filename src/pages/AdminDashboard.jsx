@@ -18,19 +18,19 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-  Promise.all([
-    api.get("/admin/stats"),
-    api.get("/admin/revenue-chart")
-  ])
-    .then(([statsRes, chartRes]) => {
-      setStats(statsRes.data);
-      setChartData(chartRes.data);
-    })
-    .catch((err) => {
-      console.error("Dashboard load error:", err);
-    })
-    .finally(() => setLoading(false));
-}, []);
+    Promise.all([
+      api.get("/admin/stats"),
+      api.get("/admin/revenue-chart")
+    ])
+      .then(([statsRes, chartRes]) => {
+        setStats(statsRes.data);
+        setChartData(chartRes.data);
+      })
+      .catch((err) => {
+        console.error("Dashboard load error:", err);
+      })
+      .finally(() => setLoading(false));
+  }, []);
 
 
   return (
@@ -50,31 +50,32 @@ export default function AdminDashboard() {
         </div>
       )}
       {/* REVENUE CHART */}
-{!loading && chartData.length > 0 && (
-  <div className="bg-white border rounded-xl p-6 mb-10">
-    <h2 className="text-xl font-semibold mb-4">Revenue Over Time</h2>
+      {!loading && chartData.length > 0 && (
+        <div className="bg-white border rounded-xl p-6 mb-10">
+          <h2 className="text-xl font-semibold mb-4">Revenue Over Time</h2>
 
-    <ResponsiveContainer width="100%" height={300}>
-      <LineChart data={chartData}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="date" />
-        <YAxis />
-        <Tooltip />
-        <Line
-          type="monotone"
-          dataKey="revenue"
-          stroke="#4f46e5"
-          strokeWidth={3}
-        />
-      </LineChart>
-    </ResponsiveContainer>
-  </div>
-)}
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={chartData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="date" />
+              <YAxis />
+              <Tooltip />
+              <Line
+                type="monotone"
+                dataKey="revenue"
+                stroke="#4f46e5"
+                strokeWidth={3}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      )}
 
 
       {/* QUICK LINKS */}
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
         <DashboardLink to="/admin/products" title="Manage Products" />
+        <DashboardLink to="/admin/categories" title="Manage Categories" />
         <DashboardLink to="/admin/orders" title="Manage Orders" />
       </div>
     </div>

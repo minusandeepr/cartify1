@@ -26,10 +26,12 @@ import Orders from "./pages/Orders.jsx";
 import OrderDetails from "./pages/OrderDetails.jsx";
 import AdminProducts from "./pages/AdminProducts.jsx"
 import AdminProductForm from "./pages/AdminProductForm.jsx";
+import AdminCategories from "./pages/AdminCategories.jsx";
+import AdminCategoryForm from "./pages/AdminCategoryForm.jsx";
 import AdminOrders from "./pages/admin/AdminOrders.jsx";
 import AdminOrderDetails from "./pages/admin/AdminOrderDetails.jsx";
 import "./i18n";
-import store from "./app/store";  
+import store from "./app/store";
 import "./global.css";
 
 const token = localStorage.getItem("token");
@@ -73,23 +75,27 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="cart" element={<Cart />} />
               <Route path="wishlist" element={<Wishlist />} />
-              <Route path="profile" element={<Profile />}/>
-              <Route path="orders" element={<Orders />} /> 
-              <Route path="orders/:id" element={<OrderDetails />} /> 
+              <Route path="profile" element={<Profile />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="orders/:id" element={<OrderDetails />} />
             </Route>
 
             {/* Admin-only */}
-<Route element={<AdminRoute />}>
-  <Route path="admin/dashboard" element={<AdminDashboard />} />
-  <Route path="admin/products" element={<AdminProducts />} />
-  <Route path="admin/products/new" element={<AdminProductForm />} />
-  <Route path="admin/products/:id/edit" element={<AdminProductForm />} />
+            <Route element={<AdminRoute />}>
+              <Route path="admin/dashboard" element={<AdminDashboard />} />
+              <Route path="admin/products" element={<AdminProducts />} />
+              <Route path="admin/products/new" element={<AdminProductForm />} />
+              <Route path="admin/products/:id/edit" element={<AdminProductForm />} />
 
-  <Route path="admin/orders" element={<AdminOrders />} />
-  <Route path="admin/orders/:id" element={<AdminOrderDetails />} />
+              <Route path="admin/categories" element={<AdminCategories />} />
+              <Route path="admin/categories/new" element={<AdminCategoryForm />} />
+              <Route path="admin/categories/:id/edit" element={<AdminCategoryForm />} />
 
-  
-</Route>
+              <Route path="admin/orders" element={<AdminOrders />} />
+              <Route path="admin/orders/:id" element={<AdminOrderDetails />} />
+
+
+            </Route>
 
 
 
@@ -98,7 +104,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               <Route path="register" element={<Register />} />
               <Route path="login" element={<Login />} />
             </Route>
-            
+
 
             <Route path="*" element={<div className="p-8">Page not found</div>} />
           </Route>
