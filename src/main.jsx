@@ -16,6 +16,9 @@ import Products from "./pages/Products.jsx";
 import ProductDetail from "./pages/ProductDetail.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import AdminRoute from "./components/AdminRoute.jsx";
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
+
 import Dashboard from "./pages/Dashboard.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
 import Register from "./pages/auth/Register.jsx";
@@ -24,12 +27,14 @@ import Wishlist from "./pages/Wishlist.jsx";
 import Cart from "./pages/Cart.jsx";
 import Orders from "./pages/Orders.jsx";
 import OrderDetails from "./pages/OrderDetails.jsx";
+import Checkout from "./pages/Checkout";
 import AdminProducts from "./pages/AdminProducts.jsx"
 import AdminProductForm from "./pages/AdminProductForm.jsx";
 import AdminCategories from "./pages/AdminCategories.jsx";
 import AdminCategoryForm from "./pages/AdminCategoryForm.jsx";
 import AdminOrders from "./pages/admin/AdminOrders.jsx";
 import AdminOrderDetails from "./pages/admin/AdminOrderDetails.jsx";
+import AdminUsers from "./pages/admin/AdminUsers.jsx";
 import "./i18n";
 import store from "./app/store";
 import "./global.css";
@@ -70,6 +75,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               <Route path=":id" element={<ProductDetail />} />
             </Route>
 
+              <Route path="about" element={<About />} />
+              <Route path="contact" element={<Contact />} />
+
+              <Route path="/checkout" element={<Checkout />} />
+
             {/* Protected routes (requires auth) */}
             <Route element={<ProtectedRoute />}>
               <Route path="dashboard" element={<Dashboard />} />
@@ -93,6 +103,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
               <Route path="admin/orders" element={<AdminOrders />} />
               <Route path="admin/orders/:id" element={<AdminOrderDetails />} />
+              <Route path="admin/users" element={<AdminUsers />} />
+
 
 
             </Route>

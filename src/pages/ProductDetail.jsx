@@ -5,14 +5,31 @@ import { useDispatch } from "react-redux";
 import { addToCartServer } from "../features/cart/cartSlice";
 
 
-const getProductImageUrl = (product) => {
+/*const getProductImageUrl = (product) => {
   if (!product) return null;
   if (product.image) return product.image;
   if (Array.isArray(product.images) && product.images.length > 0) {
     return product.images[product.images.length - 1].url;
   }
   return null;
+};*/
+
+/*const getProductImageUrl = (product) => {
+  if (!product?.images?.length) return null;
+  return product.images[0].url;
+};*/
+const getProductImageUrl = (product) => {
+  if (!product?.images?.length) return null;
+
+  const url = product.images[0].url;
+
+  if (url.startsWith("http")) return url;
+
+  return `${import.meta.env.VITE_API_URL}${url}`;
 };
+
+
+
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -28,7 +45,7 @@ export default function ProductDetail() {
     const loadProduct = async () => {
       try {
         setLoading(true);
-        const res = await api.get(`/api/products/${id}`);
+        const res = await api.get(`/products/${id}`);
         if (!ignore) {
           setProduct(res.data);
           setError(null);

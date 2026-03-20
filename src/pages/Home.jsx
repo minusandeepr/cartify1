@@ -13,13 +13,10 @@ const Home = () => {
 
     async function loadProducts() {
       try {
-        // Call your backend directly
         const res = await fetch("http://localhost:5000/api/products");
         const data = await res.json();
 
         if (cancelled) return;
-
-        // Backend returns { items: [...] }
         const list = Array.isArray(data) ? data : data.items || [];
         setProducts(list);
       } catch (err) {

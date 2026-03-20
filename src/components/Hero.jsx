@@ -1,6 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 const HERO_IMAGE =
   "https://images.pexels.com/photos/796602/pexels-photo-796602.jpeg?auto=compress&cs=tinysrgb&w=1200";
@@ -8,6 +10,7 @@ const HERO_IMAGE =
 export default function Hero() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const user = useSelector((state) => state.auth.user);
 
   const handleShop = () => {
     navigate("/products");
@@ -38,13 +41,14 @@ export default function Hero() {
           >
             {t("hero.shop")}
           </button>
-
+          {!user && (
           <button
             onClick={handleCreateAccount}
             className="px-6 py-3 border border-gray-300 rounded-md hover:bg-gray-50 transition"
           >
             {t("hero.create")}
           </button>
+           )}
         </div>
       </div>
 

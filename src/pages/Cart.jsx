@@ -28,20 +28,22 @@ const Cart = () => {
     alert("Your cart is empty");
     return;
   }
+    navigate("/checkout");
+  };
 
-  try {
+  /*try {
     await apiCreateOrder({
       items,
       totalAmount: totalPrice,
     });
 
     dispatch(clearCartOnServer());
-    navigate("/orders");
+    navigate("/checkout");
   } catch (err) {
     console.error("Place order failed:", err);
     alert("Failed to place order");
   }
-};
+};*/
 
 
   if (loading) {

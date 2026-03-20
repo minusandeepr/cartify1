@@ -19,9 +19,9 @@ const Login = () => {
     if (!isAuthenticated) return;
 
     if (user?.role === "admin") {
-      navigate("/admin/orders");
+      navigate("/admin/dashboard");
     } else {
-      navigate("/products");
+      navigate("/");
     }
   }, [isAuthenticated, user, navigate]);
 

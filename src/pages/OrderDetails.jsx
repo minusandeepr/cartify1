@@ -10,11 +10,15 @@ export default function OrderDetails() {
   const navigate = useNavigate();
   const [order, setOrder] = useState(null);
   const [error, setError] = useState("");
+  const token = localStorage.getItem("token");
+
 
   useEffect(() => {
     const loadOrder = async () => {
       try {
-        const { data } = await api.get(`/orders/${id}`);
+        const { data } = await api.get(`/orders/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+         });
         setOrder(data);
       } catch (err) {
         console.error("Order details error:", err);
@@ -23,7 +27,51 @@ export default function OrderDetails() {
     };
 
     loadOrder();
-  }, [id]);
+  }, [id,token]);
+  const handlePayNow = async () => {
+    if (!order) return;
+
+    try {
+      const res = await api.post(
+        "/orders/create-razorpay-order",
+        { orderId: order._id },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      const { razorpayOrderId, amount, currency, key } = res.data;
+
+      const options = {
+        key,
+        amount,
+        currency,
+        name: "Cartify",
+        description: "Order Payment",
+        order_id: razorpayOrderId,
+        handler: async function (response) {
+          await api.post(
+            "/orders/verify-razorpay-payment",
+            {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+            },
+            { headers: { Authorization: `Bearer ${token}` } }
+          );
+
+          toast.success("Payment successful");
+          window.location.reload();
+        },
+        theme: { color: "#7c3aed" },
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (err) {
+      console.error("Payment error:", err);
+      toast.error("Payment failed");
+    }
+  };
+
 
   const handleCancelOrder = async () => {
     if (!window.confirm("Are you sure you want to cancel this order?")) {
@@ -111,14 +159,24 @@ setTimeout(() => {
           Status: {order.status}
         </p>
         {order.status === "Pending" && (
-          <div className="mt-4">
+          <div className="mt-4 flex gap-4 justify-end">
             <button
               onClick={handleCancelOrder}
               className="bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700"
             >
               Cancel Order
             </button>
-          </div>
+    
+        
+       {order.status === "Pending" && !order.isPaid && (
+  <button
+    onClick={handlePayNow}
+    className="bg-purple-600 text-white px-6 py-2 rounded-lg"
+  >
+    Pay Now
+  </button>
+   )}
+</div>
         )}
       </div>
 

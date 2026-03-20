@@ -7,14 +7,31 @@ import { addToCartServer } from "../features/cart/cartSlice";
 import { toggleWishlistItem } from "../features/wishlist/wishlistSlice";
 import { toast } from "react-toastify";
 
-const getProductImageUrl = (product) => {
+/*const getProductImageUrl = (product) => {
   if (!product) return null;
   if (product.image) return product.image;
   if (Array.isArray(product.images) && product.images.length > 0) {
     return product.images[product.images.length - 1].url;
   }
   return null;
+};*/
+/*const getProductImageUrl = (product) => {
+  if (!product?.images?.length) return null;
+  return product.images[0].url;
+};*/
+const getProductImageUrl = (product) => {
+  if (!product?.images?.length) return null;
+
+  const url = product.images[0].url;
+
+  // If already absolute, return as is
+  if (url.startsWith("http")) return url;
+
+  // Otherwise prefix backend URL
+  return `${import.meta.env.VITE_API_URL}${url}`;
 };
+
+
 
 export default function ProductCard({ product }) {
   const { t } = useTranslation();
@@ -39,6 +56,7 @@ export default function ProductCard({ product }) {
   try {
     await dispatch(addToCartServer(productId)).unwrap();
     alert(t("product.addToCartSuccess", "Added to cart"));
+    
   } catch (err) {
     console.error("addToCartServer failed", err);
     alert(

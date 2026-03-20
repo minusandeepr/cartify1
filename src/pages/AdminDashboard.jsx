@@ -74,6 +74,7 @@ export default function AdminDashboard() {
 
       {/* QUICK LINKS */}
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <DashboardLink to="/admin/users" title="Manage Users" />
         <DashboardLink to="/admin/products" title="Manage Products" />
         <DashboardLink to="/admin/categories" title="Manage Categories" />
         <DashboardLink to="/admin/orders" title="Manage Orders" />
